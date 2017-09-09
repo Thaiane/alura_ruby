@@ -15,6 +15,27 @@ def da_boas_vindas
     nome
 end
 
+def ganhou
+    puts
+    puts "             OOOOOOOOOOO               "
+    puts "         OOOOOOOOOOOOOOOOOOO           "
+    puts "      OOOOOO  OOOOOOOOO  OOOOOO        "
+    puts "    OOOOOO      OOOOO      OOOOOO      "
+    puts "  OOOOOOOO  #   OOOOO  #   OOOOOOOO    "
+    puts " OOOOOOOOOO    OOOOOOO    OOOOOOOOOO   "
+    puts "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  "
+    puts "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  "
+    puts "OOOO  OOOOOOOOOOOOOOOOOOOOOOOOO  OOOO  "
+    puts " OOOO  OOOOOOOOOOOOOOOOOOOOOOO  OOOO   "
+    puts "  OOOO   OOOOOOOOOOOOOOOOOOOO  OOOO    "
+    puts "    OOOOO   OOOOOOOOOOOOOOO   OOOO     "
+    puts "      OOOOOO   OOOOOOOOO   OOOOOO      "
+    puts "         OOOOOO         OOOOOO         "
+    puts "             OOOOOOOOOOOO              "
+    puts
+    puts "               Acertou!                "
+    puts
+end
 
 da_boas_vindas
 
@@ -45,6 +66,7 @@ for tentativa in 1..3 do
 
   if acertou
     puts "Acertou!"
+    ganhou
     break
   else
     if (numero_sorteado - chute.to_i) > 0
