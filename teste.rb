@@ -39,56 +39,73 @@ end
 
 
 
-def sorteia_numero_secreto
-  puts "Escolhendo um número secreto entre 0 e 200..."
-  numero_secreto = 175
-  puts "Escolhido... que tal adivinhar hoje nosso número secreto?"
-  puts "\n\n\n"
-  numero_secreto
-end
-
-  numero_sorteado = sorteia_numero_secreto
-
-def pede_um_numero(tentativa)
-    puts "\n\n\n\n"
-    puts "Tentativa " + tentativa.to_s
-    puts "Entre com o número"
-    chute = gets
-    puts "Será que acertou? Você chutou " + chute
-    chute
-end
-
 def pede_dificuldade
     puts "Qual o nível de dificuldade que deseja? (1 fácil, 5 difícil)"
     dificuldade = gets.to_i
 end
 
 def sorteia_numero_secreto(dificuldade)
-    puts "Escolhendo um número secreto entre 0 e 200..."
-    sorteado = rand(200)
+    case dificuldade
+    when 1
+        maximo = 30
+    when 2
+        maximo = 60
+    when 3
+        maximo = 100
+    when 4
+        maximo = 150
+    else
+        maximo = 200
+    end
+    puts "Escolhendo um número secreto entre 1 e #{maximo}..."
+    sorteado = rand(maximo) + 1
     puts "Escolhido... que tal adivinhar nosso número secreto?"
     sorteado
 end
 
-da_boas_vindas
+def pede_um_numero(chutes, tentativa, limite_de_tentativas)
+    puts "\n\n\n\n"
+    puts "Tentativa #{tentativa} de #{limite_de_tentativas}"
+    puts "Chutes até agora: #{chutes}"
+    puts "Entre com o número"
+    chute = gets.strip
+    puts "Será que acertou? Você chutou #{chute}"
+    chute.to_i
+end
+
+def verifica_se_acertou(numero_secreto, chute)
+    acertou = numero_secreto == chute
+    if acertou
+        puts "Acertou!"
+        ganhou
+        return true
+    end
+    maior = numero_secreto > chute
+    if maior
+        puts "O número secreto é maior!"
+    else
+        puts "O número secreto é menor!"
+    end
+    false
+end
+
+nome = da_boas_vindas
 dificuldade = pede_dificuldade
 numero_secreto = sorteia_numero_secreto dificuldade
 
-for tentativa in 1..3 do
+limite_de_tentativas = 5
+chutes = []
+pontos_ate_agora = 1000
 
-  chute = pede_um_numero(tentativa)
+for tentativa in 1..limite_de_tentativas
+    chute = pede_um_numero chutes, tentativa, limite_de_tentativas
+    chutes << chute
 
-  acertou = numero_sorteado == chute.to_i
-
-  if acertou
-    puts "Acertou!"
-    ganhou
-    break
-  else
-    if (numero_sorteado - chute.to_i) > 0
-      puts "Chute menor que o número secreto \n"
-    else 
-      puts "Chute maior que o número secreto \n"
+    pontos_a_perder = (chute - numero_secreto).abs / 2.0
+    pontos_ate_agora = pontos_ate_agora - pontos_a_perder
+    if verifica_se_acertou numero_secreto, chute
+        break
     end
-  end
 end
+
+puts "Você ganhou #{pontos_ate_agora} pontos."
