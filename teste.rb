@@ -37,7 +37,7 @@ def ganhou
     puts
 end
 
-da_boas_vindas
+
 
 def sorteia_numero_secreto
   puts "Escolhendo um número secreto entre 0 e 200..."
@@ -57,6 +57,22 @@ def pede_um_numero(tentativa)
     puts "Será que acertou? Você chutou " + chute
     chute
 end
+
+def pede_dificuldade
+    puts "Qual o nível de dificuldade que deseja? (1 fácil, 5 difícil)"
+    dificuldade = gets.to_i
+end
+
+def sorteia_numero_secreto(dificuldade)
+    puts "Escolhendo um número secreto entre 0 e 200..."
+    sorteado = rand(200)
+    puts "Escolhido... que tal adivinhar nosso número secreto?"
+    sorteado
+end
+
+da_boas_vindas
+dificuldade = pede_dificuldade
+numero_secreto = sorteia_numero_secreto dificuldade
 
 for tentativa in 1..3 do
 
