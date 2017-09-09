@@ -1,13 +1,22 @@
-def boas_vindas
-
-  puts "Bem vindo ao jogo da adivinhação"
-  puts "Qual é o seu nome?"
-  nome = gets
-  puts "\n\n\n\n\nComeçaremos o jogo para você, " + nome
-
+def da_boas_vindas
+    puts
+    puts "        P  /_\  P                              "
+    puts "       /_\_|_|_/_\                             "
+    puts "   n_n | ||. .|| | n_n         Bem vindo ao    "
+    puts "   |_|_|nnnn nnnn|_|_|     Jogo de Adivinhação!"
+    puts "  |' '  |  |_|  |'  ' |                        "
+    puts "  |_____| ' _ ' |_____|                        " 
+    puts "        \__|_|__/                              "
+    puts
+    puts "Qual é o seu nome?"
+    nome = gets.strip
+    puts "\n\n\n\n\n\n"
+    puts "Começaremos o jogo para você, #{nome}"
+    nome
 end
 
-boas_vindas
+
+da_boas_vindas
 
 def sorteia_numero_secreto
   puts "Escolhendo um número secreto entre 0 e 200..."
