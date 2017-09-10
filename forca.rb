@@ -35,7 +35,7 @@ def joga(nome)
         if chutou_uma_unica_letra
             total_encontrado = 0
 
-            for i = 0..(palavra_secreta.size - 1)
+            for i in 0..(palavra_secreta.size - 1)
                 letra = palavra_secreta[i]
                 if letra == chute
                     total_encontrado += 1
