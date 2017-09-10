@@ -31,7 +31,34 @@ def joga(nome)
         chute = pede_um_chute chutes, erros
         chutes << chute
 
-        # colocar as regras de acerto e erro aqui!
+        chutou_uma_unica_letra = chute.size == 1
+        if chutou_uma_unica_letra
+            total_encontrado = 0
+
+            for i = 0..(palavra_secreta.size - 1)
+                letra = palavra_secreta[i]
+                if letra == chute
+                    total_encontrado += 1
+                end
+            end
+
+            if total_encontrado == 0
+                puts "Letra não encontrada!"
+                erros += 1
+            else
+                puts "Letra encontrada #{total_encontrado} vezes!"
+            end
+        else
+            acertou = chute == palavra_secreta
+            if acertou
+                puts "Parabéns! Acertou!"
+                pontos_ate_agora += 100
+                break
+            else
+                puts "Que pena... errou!"
+                pontos_ate_agora -= 30
+            end
+        end
 
     end
 
@@ -51,20 +78,6 @@ end
 nome = boas_vindas
 
 loop do
-    chutou_uma_unica_letra = chute.size == 1
-	if chutou_uma_unica_letra
-
-	else
-   		acertou = chute == palavra_secreta
-   		 if acertou
-        	puts "Parabéns! Acertou!"
-        	pontos_ate_agora += 100
-        	break
-    	else
-        	puts "Que pena... errou!"
-        	pontos_ate_agora -= 30
-        	erros += 1
-    	end
-	end
+    joga nome
     break if nao_quer_jogar?
 end
