@@ -33,15 +33,7 @@ def joga(nome)
 
         chutou_uma_unica_letra = chute.size == 1
         if chutou_uma_unica_letra
-            total_encontrado = 0
-
-            for i in 0..(palavra_secreta.size - 1)
-                letra = palavra_secreta[i]
-                if letra == chute
-                    total_encontrado += 1
-                end
-            end
-
+            total_encontrado = palavra_secreta.count(chute[0])
             if total_encontrado == 0
                 puts "Letra não encontrada!"
                 erros += 1
@@ -57,6 +49,7 @@ def joga(nome)
             else
                 puts "Que pena... errou!"
                 pontos_ate_agora -= 30
+                erros += 1
             end
         end
 
